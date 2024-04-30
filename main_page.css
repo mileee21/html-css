@@ -1,0 +1,85 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins";
+  }
+    ul,ol{list-style:none}
+    a{text-decoration:none;color:#fff;font-size:15px}
+    nav{width:80%;overflow:hidden;height:80px;background-color:transparent#1b2035;margin:50px auto}
+
+  body{
+    display: flex;
+    flex-direction: column; /* 요소들을 수직으로 배열합니다. */
+
+    justify-content: center;
+    align-items: center;
+
+    min-height: 100vh;
+    background: url(login_bg.jpg) no-repeat;
+    /*background-color: cadetblue;*/
+    background-size: cover;
+    background-position: center;
+ }
+
+ .nav2>a {
+    display: block; /* a태그는 글자성격 = inline */
+    float: left;
+    font-size: 30px;
+    font-weight: 900;
+    line-height: 80px;
+    padding: 0 30px;
+  }
+  #nav2>ul {
+    float: right;
+  }
+  #nav2>ul li {
+    float: left;
+    padding: 0 30px;
+    line-height: 80px;
+  }
+
+  
+ .msger-header {
+    font-weight: bolder;
+    font-size: 100px;
+    /*font-family: Verdana;*/
+    text-align: center;
+
+    width: 900px;
+    padding: 20px 0;
+
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(10px); /*투명도*/
+    color: #fff;
+    border-radius: 12px;
+    padding: 30px 40px;
+
+ }
+
+ .textbox{
+    font-size: 50px;
+    font-weight: bold;
+    /*color: purple;*/
+ }
+
+ .wrap{
+    font-size: 50px;
+    width: 100% ;
+    padding: 40px 0;
+    text-align: center;
+  }
+
+  .login-button, 
+  .signup-button {
+
+    font-weight: bold;
+    font-size: 20px;
+
+    text-align: center;
+    backdrop-filter: blur(10px); /*투명도*/
+    color: rgba(0, 0, 0, 0.671);
+    padding: 10px ;
+    margin-inline: 100px;
+  }
+
