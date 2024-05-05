@@ -1,18 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@400;500;600;700&display=swap');
+
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
-    /*font-family: "Poppins", sans-serif;*/
   }
+
+
+  :root {
+   --poppins: 'Poppins', sans-serif;
+   --lato: 'Lato', sans-serif;
+
+   --light: #F9F9F9;
+   --blue: #3C91E6;
+   --light-blue: #CFE8FF;
+   --grey: #eee;
+   --dark-grey: #AAAAAA;
+   --dark: #342E37;
+   --red: #DB504A;
+   --yellow: #FFCE26;
+   --light-yellow: #FFF2C6;
+   --orange: #FD7238;
+   --light-orange: #FFE0D3;
+}
+
+
 
   body{
    font-family: 'Poppins';
    
-   background: url(login_bg.jpg) no-repeat;
-   /*background-color: cadetblue;*/
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   background: var(--white);
    background-size: cover;
    background-position: center;
+
 }
 
 .wrapper{
@@ -20,10 +44,10 @@
    margin: 0 auto; /* 좌우 마진을 auto로 설정하여 가운데 정렬 */
 
    width: 420px;
-   background: transparent;
+   background: var(--light-blue);
    border: 2px solid rgba(255, 255, 255, .2);
    backdrop-filter: blur(9px);
-   color: #fff;
+   color: var(--dark);
    border-radius: 12px;
    padding: 30px 40px;
  }
@@ -32,14 +56,14 @@
 input[type=text], input[type=password] {
     width: 100%;
     height: 100%;
-    background: transparent;
+    background: var(--light);
     border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
+    border: 5px solid transparent;
     border-radius: 40px;
-    font-size: 16px;
-    color: #fff;
-    padding: 20px 0px 20px 20px;
+    font-size: 15px;
+    font-family: 'Poppins';
+    padding: 15px 0px 15px 15px;
     margin-top: 5px;
     margin-bottom: 10px;
 }
@@ -53,7 +77,7 @@ input[type=text]:focus, input[type=password]:focus {
    outline: none;
 }
 hr {
-   border: 3px solid #f1f1f1;
+   border: 1px solid transparent;
    margin-bottom: 25px;
 }
 
@@ -62,12 +86,17 @@ p{
    margin: 10px;
 }
 
+.signupBtn {
+   border-radius: 0;
+   
+}
 
 button {
-   font-size: 18px;
+   font-family: 'Poppins';
+   font-size: 13px;
    font-weight: bold;
-   background-color: rgba(99, 194, 99, 0.381);
-   color: white;
+   background-color: var(--blue);
+   color: var(--light);
    padding: 14px 20px;
    margin: 8px 0;
    border: none;

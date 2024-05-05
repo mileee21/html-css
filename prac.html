@@ -1,0 +1,229 @@
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* 파일 입력 요소 숨기기 */
+        .hidden-file-input {
+            position: absolute;
+            opacity: 0;
+            width: 1px;
+            height: 1px;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        /* 사용자 정의 버튼 스타일링 */
+        .custom-button {
+            background-color: #3C91E6;  /* 파란색 배경 */
+            color: white;  /* 흰색 텍스트 */
+            border: none;  /* 테두리 제거 */
+            border-radius: 5px;  /* 둥근 모서리 */
+            padding: 10px 20px;  /* 패딩 */
+            cursor: pointer;  /* 포인터 커서 */
+        }
+        
+        .custom-button:hover {
+            background-color: #2A78C2;  /* 호버 효과 */
+        }
+
+        /* 미리보기 컨테이너 */
+        #image-preview1 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgrey;  /* 배경색 */
+            border-radius: 10px;  /* 둥근 모서리 */
+            overflow: hidden;  /* 넘침 숨기기 */
+            margin-top: 10px;  /* 상단 여백 */
+        }
+        #image-preview2 {
+            width: 100px;
+            height: 100px;
+            background-color: lightgrey;  /* 배경색 */
+            border-radius: 10px;  /* 둥근 모서리 */
+            overflow: hidden;  /* 넘침 숨기기 */
+            margin-top: 10px;  /* 상단 여백 */
+        }
+    </style>
+    
+    <script>
+        function triggerFileInput1() {
+            document.getElementById("file-input1").click();  /* 파일 입력 요소 클릭 */
+        }
+        
+        function triggerFileInput2() {
+            document.getElementById("file-input2").click();  /* 파일 입력 요소 클릭 */
+        }
+
+        function loadFile(input,previewId) {
+            let file = input.files[0];  /* 선택된 파일 가져오기 */
+
+            if (file) {
+                let newImage = document.createElement("img");
+                newImage.src = URL.createObjectURL(file);  /* 파일을 이미지로 변환 */
+                newImage.style.width = "100%";
+                newImage.style.height = "100%";
+                newImage.style.objectFit = "cover";
+
+                let container = document.getElementById(previewId);
+                container.innerHTML = '';  /* 기존 콘텐츠 제거 */
+                container.appendChild(newImage);  /* 새로운 이미지 추가 */
+            }
+        }
+    </script>
+</head>
+<body>
+    
+    <input type="file" id="file-input1" class="hidden-file-input" accept="image/*" onchange="loadFile(this,'image-preview1')">
+
+   
+    <button class="custom-button" onclick="triggerFileInput1()">Choose File</button> 
+
+    <input type="file" id="file-input2" class="hidden-file-input" accept="image/*" onchange="loadFile(this, 'image-preview2')">
+
+    <button class="custom-button" onclick="triggerFileInput2()">Choose File</button>  
+    <button class="custom-button">Choose File</button> 
+
+    <div id="image-preview1"></div>
+    <div id="image-preview2"></div>
+</body>
+</html> 
+-->
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        /* 전체 컨테이너: 세로 방향으로 Flexbox 적용 */
+        .container {
+            display: flex;
+            flex-direction: column; /* 세로 방향으로 배치 */
+            align-items: center; /* 중앙 정렬 */
+            gap: 20px; /* 각 버튼 사이의 간격 */
+            height: 100vh; /* 전체 높이 */
+        }
+
+        /* 첫 번째 버튼을 위한 컨테이너 */
+        .top-button {
+            display: flex;
+            justify-content: center; /* 중앙 정렬 */
+        }
+
+        /* 나머지 3개 버튼을 위한 컨테이너 */
+        .bottom-buttons {
+            display: flex;
+            justify-content: space-around; /* 수평으로 나란히 배치 */
+            width: 100%; /* 전체 너비로 확장 */
+        }
+
+        /* 버튼 스타일 */
+        .button {
+            background-color: #3C91E6;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <div class="top-button">
+            <button class="button">Button 1</button>
+        </div>
+    
+        <div class="bottom-buttons">
+            <button class="button">Button 2</button>
+            <button class="button">Button 3</button>
+            <button class="button">Button 4</button>
+        </div>
+    </div>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://apis.google.com/js/api:client.js"></script>
+  <script>
+  var googleUser = {};
+  var startApp = function() {
+    gapi.load('auth2', function(){
+      // Retrieve the singleton for the GoogleAuth library and set up the client.
+      auth2 = gapi.auth2.init({
+        client_id: 'YOUR_CLIENT_ID.apps.googleusercontent.com',
+        cookiepolicy: 'single_host_origin',
+        // Request scopes in addition to 'profile' and 'email'
+        //scope: 'additional_scope'
+      });
+      attachSignin(document.getElementById('customBtn'));
+    });
+  };
+
+  function attachSignin(element) {
+    console.log(element.id);
+    auth2.attachClickHandler(element, {},
+        function(googleUser) {
+          document.getElementById('name').innerText = "Signed in: " +
+              googleUser.getBasicProfile().getName();
+        }, function(error) {
+          alert(JSON.stringify(error, undefined, 2));
+        });
+  }
+  </script>
+  <style type="text/css">
+    #customBtn {
+      display: inline-block;
+      background: white;
+      color: #444;
+      width: 190px;
+      border-radius: 5px;
+      border: thin solid #888;
+      box-shadow: 1px 1px 1px grey;
+      white-space: nowrap;
+    }
+    #customBtn:hover {
+      cursor: pointer;
+    }
+    span.label {
+      font-family: serif;
+      font-weight: normal;
+    }
+    span.icon {
+      background: url('/identity/sign-in/g-normal.png') transparent 5px 50% no-repeat;
+      display: inline-block;
+      vertical-align: middle;
+      width: 42px;
+      height: 42px;
+    }
+    span.buttonText {
+      display: inline-block;
+      vertical-align: middle;
+      padding-left: 42px;
+      padding-right: 42px;
+      font-size: 14px;
+      font-weight: bold;
+      /* Use the Roboto font that is loaded in the <head> */
+      font-family: 'Roboto', sans-serif;
+    }
+  </style>
+  </head>
+  <body>
+  <!-- In the callback, you would hide the gSignInWrapper element on a
+  successful sign in -->
+  <div id="gSignInWrapper">
+    <span class="label">Sign in with:</span>
+    <div id="customBtn" class="customGPlusSignIn">
+      <span class="icon"></span>
+      <span class="buttonText">Google</span>
+    </div>
+  </div>
+  <div id="name"></div>
+  <script>startApp();</script>
+</body>
+</html>
